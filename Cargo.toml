@@ -1,0 +1,21 @@
+[package]
+name = "gnome-passwordstore"
+version = "0.1.0"
+edition = "2021"
+authors = ["Leonardo Eugênio <lelgenio@lelgenio.com>"]
+
+[dependencies]
+dirs = "5.0.1"
+relm4 = { version = "0.8.0", features = ["libadwaita", "gnome_46"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+
+[dependencies.adw]
+package = "libadwaita"
+version = "0.6.0"
+features = ["v1_5"]
+
+[dependencies.gtk]
+package = "gtk4"
+version = "0.8.2"
+features = ["v4_2"]
