@@ -175,6 +175,12 @@ impl SimpleComponent for App {
                     .unwrap()
                     .map(Result::unwrap)
                     .map(|arg0: DirEntry| DirEntry::path(&arg0))
+                    .filter(|path| {
+                        let basename = path.file_name().unwrap_or_default().to_string_lossy();
+                        let hidden = basename.starts_with('.');
+
+                        !hidden && (path.is_dir() || basename.ends_with(".gpg"))
+                    })
                     .map(PasswordStoreEntry::from)
                     .collect::<Vec<PasswordStoreEntry>>();
 
